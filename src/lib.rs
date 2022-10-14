@@ -30,8 +30,21 @@
 
 #![cfg_attr(feature = "nightly", feature(thread_id_value))]
 #![cfg_attr(feature = "sgx", no_std)]
+#![no_std]
+extern crate alloc;
+
+use alloc::borrow::ToOwned;
+use alloc::boxed::Box;
+use alloc::format;
+use alloc::string::{String, ToString};
+use alloc::vec;
+use alloc::vec::Vec;
+use core::convert::{TryFrom, TryInto};
+use core::iter::FromIterator;
+use core::prelude::v1::*;
 
 #[cfg(feature = "sgx")]
+#[macro_use]
 extern crate sgx_tstd as std;
 #[cfg(feature = "colored")]
 use colored::*;
