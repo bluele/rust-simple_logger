@@ -29,7 +29,10 @@
 //! ```
 
 #![cfg_attr(feature = "nightly", feature(thread_id_value))]
+#![cfg_attr(feature = "sgx", no_std)]
 
+#[cfg(feature = "sgx")]
+extern crate sgx_tstd as std;
 #[cfg(feature = "colored")]
 use colored::*;
 use log::{Level, LevelFilter, Log, Metadata, Record, SetLoggerError};
